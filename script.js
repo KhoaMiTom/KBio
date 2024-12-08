@@ -35,32 +35,26 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 window.addEventListener('scroll', reveal);
 reveal();
 
-// Share button functionality
 const shareButton = document.getElementById('shareButton');
 let timeoutId;
 
 function showToast(message) {
-    // Remove existing toast if any
     const existingToast = document.querySelector('.toast');
     if (existingToast) {
         existingToast.remove();
     }
 
-    // Create and show new toast
     const toast = document.createElement('div');
     toast.className = 'toast';
     toast.textContent = message;
     document.body.appendChild(toast);
 
-    // Trigger reflow
     toast.offsetHeight;
 
-    // Show toast
     setTimeout(() => {
         toast.classList.add('show');
     }, 10);
 
-    // Hide toast after 2 seconds
     timeoutId = setTimeout(() => {
         toast.classList.remove('show');
         setTimeout(() => {
@@ -99,7 +93,6 @@ shareButton.addEventListener('click', async () => {
     }
 });
 
-// Clear timeout when clicking multiple times
 shareButton.addEventListener('click', () => {
     if (timeoutId) {
         clearTimeout(timeoutId);
