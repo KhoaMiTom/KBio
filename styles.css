@@ -46,6 +46,8 @@ body {
     margin: 0 auto;
     opacity: 0;
     animation: fadeInUp 1s ease forwards;
+    position: relative;
+    overflow: hidden;
 }
 
 @keyframes fadeInUp {
@@ -63,6 +65,27 @@ body {
     transform: translateY(-5px);
 }
 
+.container::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(99,102,241,0.1) 0%, transparent 50%);
+    animation: rotateGradient 15s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes rotateGradient {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 .profile-img {
     width: 180px;
     height: 180px;
@@ -73,7 +96,7 @@ body {
     border: 4px solid var(--accent-color);
     box-shadow: 0 0 25px rgba(99, 102, 241, 0.3);
     transition: transform 0.3s ease;
-    animation: fadeIn 1.5s ease forwards;
+    animation: fadeIn 1.5s ease forwards, floatAnimation 3s ease-in-out infinite;
 }
 
 @keyframes fadeIn {
@@ -82,6 +105,18 @@ body {
     }
     to {
         opacity: 1;
+    }
+}
+
+@keyframes floatAnimation {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
     }
 }
 
@@ -101,12 +136,37 @@ h1 {
     letter-spacing: 1px;
     background-size: 200% auto;
     animation: gradientShift 3s ease infinite;
+    position: relative;
+    text-shadow: 0 0 20px rgba(99,102,241,0.3);
 }
 
 @keyframes gradientShift {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
+}
+
+h1::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, 
+        transparent 0%,
+        rgba(99,102,241,0.4) 50%,
+        transparent 100%);
+    background-size: 200% 100%;
+    animation: shimmer 3s infinite;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
 }
 
 .bio {
@@ -139,8 +199,9 @@ h1 {
     overflow: hidden;
     z-index: 1;
     background: rgba(79, 70, 229, 0.1);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    animation: slideIn 0.5s ease forwards;
+    box-shadow: 0 4px 15px rgba(79, 70, 229, 0.2);
+    backdrop-filter: blur(5px);
+    animation: slideIn 0.5s ease forwards, glowPulse 2s infinite;
     opacity: 0;
 }
 
@@ -156,6 +217,18 @@ h1 {
     to {
         opacity: 1;
         transform: translateX(0);
+    }
+}
+
+@keyframes glowPulse {
+    0% {
+        box-shadow: 0 4px 15px rgba(79, 70, 229, 0.2);
+    }
+    50% {
+        box-shadow: 0 4px 20px rgba(79, 70, 229, 0.4);
+    }
+    100% {
+        box-shadow: 0 4px 15px rgba(79, 70, 229, 0.2);
     }
 }
 
@@ -177,11 +250,13 @@ h1 {
 
 .link:hover {
     color: white;
-    transform: translateY(-3px) rotateX(5deg) rotateY(5deg);
+    transform: translateY(-3px) scale(1.05);
     box-shadow: 
-        -5px 5px 15px rgba(99, 102, 241, 0.2),
-        5px -5px 15px rgba(99, 102, 241, 0.2);
-    border-color: var(--secondary-color);
+        0 0 20px rgba(79, 70, 229, 0.4),
+        0 0 30px rgba(79, 70, 229, 0.2),
+        0 0 40px rgba(79, 70, 229, 0.1);
+    border-color: transparent;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
 }
 
 .qr-code {
@@ -393,6 +468,10 @@ h1 {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     animation: popIn 0.5s ease forwards;
     opacity: 0;
+    background: linear-gradient(135deg, 
+        rgba(26,26,46,0.9) 0%,
+        rgba(26,26,46,0.95) 100%);
+    backdrop-filter: blur(10px);
 }
 
 .schedule-grid .schedule-item:nth-child(1) { animation-delay: 0.9s; }
@@ -411,9 +490,10 @@ h1 {
 }
 
 .schedule-item:hover {
-    transform: translateY(-5px) rotateX(5deg) rotateY(5deg);
-    box-shadow: 0 8px 15px rgba(99, 102, 241, 0.2);
-    border-color: var(--primary-color);
+    transform: translateY(-5px) scale(1.02);
+    background: linear-gradient(135deg,
+        rgba(79,70,229,0.1) 0%,
+        rgba(26,26,46,0.95) 100%);
 }
 
 .schedule-item .day {
