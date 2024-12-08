@@ -427,7 +427,6 @@ h1::after {
     }
 }
 
-/* Schedule Section */
 .schedule-section {
     margin: 40px auto;
     padding: 20px;
@@ -522,7 +521,6 @@ h1::after {
     font-size: 1.1rem;
 }
 
-/* Platform-specific colors */
 .schedule-item .platform i.fa-twitch {
     color: #9146FF;
 }
@@ -539,7 +537,6 @@ h1::after {
     color: #1877F2;
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
     .schedule-section {
         margin: 30px auto;
