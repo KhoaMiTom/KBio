@@ -1,10 +1,9 @@
 particlesJS('particles-js', {
     particles: {
         number: {
-            value: 80,
+            value: 100,
             density: {
-                enable: true,
-                value_area: 800
+                enable: false
             }
         },
         color: {
@@ -66,7 +65,10 @@ particlesJS('particles-js', {
                 enable: true,
                 mode: "grab"
             },
-            resize: true
+            onclick: {
+                enable: false
+            },
+            resize: false
         },
         modes: {
             grab: {
@@ -74,19 +76,9 @@ particlesJS('particles-js', {
                 line_linked: {
                     opacity: 0.8
                 }
-            },
-            bubble: {
-                distance: 200,
-                size: 12,
-                duration: 0.4,
-                opacity: 0.8,
-                speed: 3
-            },
-            repulse: {
-                distance: 150,
-                duration: 0.4
             }
         }
     },
-    retina_detect: true
+    retina_detect: true,
+    fps_limit: 60
 }); 
