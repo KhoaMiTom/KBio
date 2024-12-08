@@ -66,10 +66,6 @@ particlesJS('particles-js', {
                 enable: true,
                 mode: "grab"
             },
-            onclick: {
-                enable: true,
-                mode: "bubble"
-            },
             resize: true
         },
         modes: {
