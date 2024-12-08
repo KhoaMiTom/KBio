@@ -297,4 +297,125 @@ h1 {
         padding: 15px 30px;
         font-size: 1.1rem;
     }
+}
+
+/* Schedule Section */
+.schedule-section {
+    margin: 40px auto;
+    padding: 20px;
+    background: rgba(79, 70, 229, 0.05);
+    border-radius: 16px;
+    border: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+.schedule-title {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.schedule-title i {
+    color: var(--primary-color);
+}
+
+.schedule-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 0 10px;
+}
+
+.schedule-item {
+    background: var(--container-bg);
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.schedule-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(99, 102, 241, 0.2);
+    border-color: var(--primary-color);
+}
+
+.schedule-item .day {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 8px;
+}
+
+.schedule-item .time {
+    font-size: 0.95rem;
+    color: var(--text-color);
+    margin-bottom: 12px;
+}
+
+.schedule-item .platform {
+    font-size: 0.9rem;
+    color: var(--bio-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.schedule-item .platform i {
+    font-size: 1.1rem;
+}
+
+/* Platform-specific colors */
+.schedule-item .platform i.fa-twitch {
+    color: #9146FF;
+}
+
+.schedule-item .platform i.fa-youtube {
+    color: #FF0000;
+}
+
+.schedule-item .platform i.fa-tiktok {
+    color: #00F2EA;
+}
+
+.schedule-item .platform i.fa-facebook {
+    color: #1877F2;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .schedule-section {
+        margin: 30px auto;
+        padding: 15px;
+    }
+
+    .schedule-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .schedule-item {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .schedule-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .schedule-title {
+        font-size: 1.3rem;
+    }
+
+    .schedule-item .day {
+        font-size: 1.1rem;
+    }
 } 
