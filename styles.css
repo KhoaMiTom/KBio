@@ -44,6 +44,19 @@ body {
     max-width: 800px;
     width: 95%;
     margin: 0 auto;
+    opacity: 0;
+    animation: fadeInUp 1s ease forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .container:hover {
@@ -60,6 +73,16 @@ body {
     border: 4px solid var(--accent-color);
     box-shadow: 0 0 25px rgba(99, 102, 241, 0.3);
     transition: transform 0.3s ease;
+    animation: fadeIn 1.5s ease forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 .profile-img:hover {
@@ -76,6 +99,14 @@ h1 {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     letter-spacing: 1px;
+    background-size: 200% auto;
+    animation: gradientShift 3s ease infinite;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 .bio {
@@ -109,6 +140,23 @@ h1 {
     z-index: 1;
     background: rgba(79, 70, 229, 0.1);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    animation: slideIn 0.5s ease forwards;
+    opacity: 0;
+}
+
+.links .link:nth-child(1) { animation-delay: 0.3s; }
+.links .link:nth-child(2) { animation-delay: 0.5s; }
+.links .link:nth-child(3) { animation-delay: 0.7s; }
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 .link::before {
@@ -129,8 +177,10 @@ h1 {
 
 .link:hover {
     color: white;
-    transform: translateY(-3px);
-    box-shadow: 0 6px 15px rgba(99, 102, 241, 0.4);
+    transform: translateY(-3px) rotateX(5deg) rotateY(5deg);
+    box-shadow: 
+        -5px 5px 15px rgba(99, 102, 241, 0.2),
+        5px -5px 15px rgba(99, 102, 241, 0.2);
     border-color: var(--secondary-color);
 }
 
@@ -145,6 +195,9 @@ h1 {
     max-width: 500px;
     width: 100%;
     height: auto;
+    animation: fadeInUp 1s ease forwards;
+    animation-delay: 1.5s;
+    opacity: 0;
 }
 
 .qr-code:hover {
@@ -338,10 +391,27 @@ h1 {
     transition: all 0.3s ease;
     border: 1px solid rgba(255, 255, 255, 0.05);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    animation: popIn 0.5s ease forwards;
+    opacity: 0;
+}
+
+.schedule-grid .schedule-item:nth-child(1) { animation-delay: 0.9s; }
+.schedule-grid .schedule-item:nth-child(2) { animation-delay: 1.1s; }
+.schedule-grid .schedule-item:nth-child(3) { animation-delay: 1.3s; }
+
+@keyframes popIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 .schedule-item:hover {
-    transform: translateY(-5px);
+    transform: translateY(-5px) rotateX(5deg) rotateY(5deg);
     box-shadow: 0 8px 15px rgba(99, 102, 241, 0.2);
     border-color: var(--primary-color);
 }
@@ -418,4 +488,13 @@ h1 {
     .schedule-item .day {
         font-size: 1.1rem;
     }
+}
+
+#particles-js {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
 } 
