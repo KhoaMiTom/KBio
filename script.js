@@ -23,18 +23,10 @@ window.addEventListener('load', () => {
     document.body.style.opacity = '1';
 });
 
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
-    });
-});
-
 window.addEventListener('scroll', reveal);
 reveal();
 
+// Share functionality
 const shareButton = document.getElementById('shareButton');
 let timeoutId;
 
@@ -48,8 +40,6 @@ function showToast(message) {
     toast.className = 'toast';
     toast.textContent = message;
     document.body.appendChild(toast);
-
-    toast.offsetHeight;
 
     setTimeout(() => {
         toast.classList.add('show');
@@ -68,7 +58,6 @@ shareButton.addEventListener('click', async () => {
 
     try {
         if (navigator.share) {
-            // Use Web Share API if available
             await navigator.share({
                 title: 'KhoaDev',
                 text: 'Cảm ơn bạn đã yêu thương Khoa.',
@@ -76,7 +65,6 @@ shareButton.addEventListener('click', async () => {
             });
             showToast('Đã chia sẻ thành công!');
         } else {
-            // Fallback to clipboard copy
             await navigator.clipboard.writeText(currentUrl);
             shareButton.classList.add('copied');
             shareButton.innerHTML = '<i class="fas fa-check"></i> Đã copy link!';
@@ -90,11 +78,5 @@ shareButton.addEventListener('click', async () => {
     } catch (err) {
         console.error('Error sharing:', err);
         showToast('Có lỗi xảy ra khi chia sẻ!');
-    }
-});
-
-shareButton.addEventListener('click', () => {
-    if (timeoutId) {
-        clearTimeout(timeoutId);
     }
 }); 
