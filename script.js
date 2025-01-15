@@ -12,7 +12,6 @@ window.addEventListener('load', () => {
     document.body.style.opacity = '1';
 });
 
-// Share functionality
 const shareButton = document.getElementById('shareButton');
 let timeoutId;
 

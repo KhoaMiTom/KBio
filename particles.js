@@ -8,13 +8,13 @@ particlesJS('particles-js', {
             }
         },
         color: {
-            value: ["#FFB6C1", "#87CEEB"]
+            value: ["#8B5CF6", "#06B6D4", "#EC4899"]
         },
         shape: {
             type: "circle"
         },
         opacity: {
-            value: 0.3,
+            value: 0.2,
             random: false,
             anim: {
                 enable: false
@@ -30,13 +30,13 @@ particlesJS('particles-js', {
         line_linked: {
             enable: true,
             distance: 150,
-            color: "#FFB6C1",
-            opacity: 0.2,
+            color: "#8B5CF6",
+            opacity: 0.15,
             width: 1
         },
         move: {
             enable: true,
-            speed: 2,
+            speed: 1.5,
             direction: "none",
             random: false,
             straight: false,
