@@ -1,14 +1,3 @@
-function reveal() {
-    const container = document.querySelector('.container');
-    const containerPosition = container.getBoundingClientRect().top;
-    const screenPosition = window.innerHeight;
-
-    if (containerPosition < screenPosition) {
-        container.style.opacity = '1';
-        container.style.transform = 'translateY(0)';
-    }
-}
-
 const links = document.querySelectorAll('.link');
 links.forEach(link => {
     link.addEventListener('mouseover', () => {
@@ -22,9 +11,6 @@ links.forEach(link => {
 window.addEventListener('load', () => {
     document.body.style.opacity = '1';
 });
-
-window.addEventListener('scroll', reveal);
-reveal();
 
 // Share functionality
 const shareButton = document.getElementById('shareButton');
@@ -41,9 +27,9 @@ function showToast(message) {
     toast.textContent = message;
     document.body.appendChild(toast);
 
-    setTimeout(() => {
+    requestAnimationFrame(() => {
         toast.classList.add('show');
-    }, 10);
+    });
 
     timeoutId = setTimeout(() => {
         toast.classList.remove('show');

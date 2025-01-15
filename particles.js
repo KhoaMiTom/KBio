@@ -1,60 +1,49 @@
 particlesJS('particles-js', {
     particles: {
         number: {
-            value: 200,
+            value: 80,
             density: {
-                enable: false
+                enable: true,
+                value_area: 800
             }
         },
         color: {
-            value: ["#FFB6C1", "#87CEEB", "#98FB98", "#DDA0DD", "#F0E68C"]
+            value: ["#FFB6C1", "#87CEEB"]
         },
         shape: {
-            type: "circle",
-            stroke: {
-                width: 0,
-                color: "#000000"
-            }
+            type: "circle"
         },
         opacity: {
-            value: 0.4,
-            random: true,
+            value: 0.3,
+            random: false,
             anim: {
-                enable: true,
-                speed: 1,
-                opacity_min: 0.2,
-                sync: false
+                enable: false
             }
         },
         size: {
-            value: 4,
+            value: 3,
             random: true,
             anim: {
-                enable: true,
-                speed: 2,
-                size_min: 0.2,
-                sync: false
+                enable: false
             }
         },
         line_linked: {
             enable: true,
             distance: 150,
             color: "#FFB6C1",
-            opacity: 0.3,
+            opacity: 0.2,
             width: 1
         },
         move: {
             enable: true,
-            speed: 3,
+            speed: 2,
             direction: "none",
             random: false,
             straight: false,
-            out_mode: "bounce",
-            bounce: true,
+            out_mode: "out",
+            bounce: false,
             attract: {
-                enable: true,
-                rotateX: 1200,
-                rotateY: 1200
+                enable: false
             }
         }
     },
@@ -68,17 +57,17 @@ particlesJS('particles-js', {
             onclick: {
                 enable: false
             },
-            resize: false
+            resize: true
         },
         modes: {
             grab: {
-                distance: 200,
+                distance: 140,
                 line_linked: {
-                    opacity: 0.8
+                    opacity: 0.5
                 }
             }
         }
     },
-    retina_detect: true,
-    fps_limit: 60
+    retina_detect: false,
+    fps_limit: 30
 }); 
